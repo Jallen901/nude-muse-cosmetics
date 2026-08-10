@@ -4,8 +4,8 @@ import type {
 } from "./components/scroll-scrub/scroll-scrub";
 
 export const scrollScrubTheme: ScrollScrubTheme = {
-  accent: "#c4795e",
-  background: "#1a0f0c",
+  accent: "#b5637a",
+  background: "#1a0c10",
   ink: "#faf5f0",
   muted: "#9a7b72",
 };

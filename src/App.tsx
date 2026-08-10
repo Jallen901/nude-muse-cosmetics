@@ -21,6 +21,13 @@ const PRESS = [
   { quote: "Nudes that actually work for every skin tone", outlet: "Shade Report" },
 ];
 
+const CATEGORIES = [
+  { name: "Lip Gloss", sub: "4 shades", bg: "lu-cat-bg-gloss" },
+  { name: "Lip Liner", sub: "Precision wear", bg: "lu-cat-bg-liner" },
+  { name: "Lip Oil", sub: "Nourish & glow", bg: "lu-cat-bg-oil" },
+  { name: "Sets", sub: "Coming soon", bg: "lu-cat-bg-sets" },
+];
+
 function LogoMark() {
   return (
     <svg className="lu-logomark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -293,6 +300,27 @@ function LaunchSection() {
   );
 }
 
+function ShopCategoriesSection() {
+  return (
+    <section className="lu-categories" id="collection">
+      <div className="lu-categories-inner">
+        <p className="lu-categories-heading">Shop Categories</p>
+        <div className="lu-cat-grid">
+          {CATEGORIES.map((cat) => (
+            <a key={cat.name} href="#cta" className="lu-cat-tile">
+              <div className={"lu-cat-bg " + cat.bg} />
+              <div className="lu-cat-info">
+                <p className="lu-cat-name">{cat.name}</p>
+                <p className="lu-cat-sub">{cat.sub}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="lu-page">
@@ -302,6 +330,7 @@ function Index() {
       </header>
       <ScrollScrub scenes={scrollScrubScenes} theme={scrollScrubTheme} />
       <TrustBar />
+      <ShopCategoriesSection />
       <LaunchSection />
       <CollectionSection />
       <FeatureSection />
