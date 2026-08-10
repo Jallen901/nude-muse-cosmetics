@@ -322,6 +322,41 @@ function ShopCategoriesSection() {
   );
 }
 
+function EditSection() {
+  const [tab, setTab] = useState("ALL");
+  return (
+    <section className="lu-section" id="collection">
+      <div className="lu-container">
+        <p className="lu-eyebrow">The Edit</p>
+        <h2 className="lu-section-title">A New Kind of Nude</h2>
+        <p className="lu-section-intro">Shades engineered to complement, not erase. Every formula clean, every finish flawless.</p>
+        <div className="lu-cat-grid lu-cat-grid-edit">
+          {CATEGORIES.map((cat) => (
+            <a key={cat.name} href="#cta" className="lu-cat-tile">
+              <div className={"lu-cat-bg " + cat.bg} />
+              <div className="lu-cat-info">
+                <p className="lu-cat-name">{cat.name}</p>
+                <p className="lu-cat-sub">{cat.sub}</p>
+                <p className="lu-cat-desc">{cat.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="lu-tabs" role="tablist">
+          {TABS.map((t) => (
+            <button key={t} role="tab" aria-selected={tab === t}
+              className={"lu-tab" + (tab === t ? " lu-tab-on" : "")}
+              onClick={() => setTab(t)}>{t}</button>
+          ))}
+        </div>
+        <div className="lu-pgrid">
+          {PRODUCTS.map((p) => <ProductCard key={p.name} product={p} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="lu-page">
@@ -331,9 +366,8 @@ function Index() {
       </header>
       <ScrollScrub scenes={scrollScrubScenes} theme={scrollScrubTheme} />
       <TrustBar />
-      <ShopCategoriesSection />
+      <EditSection />
       <LaunchSection />
-      <CollectionSection />
       <FeatureSection />
       <PressBar />
       <CommunitySection />

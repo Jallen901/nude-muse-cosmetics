@@ -480,3 +480,4 @@
 .lu-cat-tile:hover .lu-cat-desc{max-height:6rem;opacity:1}
 .lu-cat-info{transition:background .35s ease}
 .lu-cat-tile:hover .lu-cat-info{background:linear-gradient(to top,rgba(42,21,32,.82) 0%,rgba(42,21,32,.15) 100%)}
+.lu-cat-grid-edit{margin:2rem 0 3rem}
