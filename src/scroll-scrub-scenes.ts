@@ -22,7 +22,7 @@ export const scrollScrubScenes: ScrollScrubScene[] = [
     title: "Be Your Own Muse.",
     body: "Every detail. Every shade. Every decision.",
     tags: ["Collection One", "Cruelty Free"],
-    scroll: 6,
+    scroll: 3,
     align: "left",
   },
 ];
