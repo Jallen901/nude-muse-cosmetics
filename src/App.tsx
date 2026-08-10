@@ -115,7 +115,6 @@ function ProductCard({ product }: { product: (typeof PRODUCTS)[number] }) {
         <ul className="lu-pbenefits">
           {product.benefits.map((b: string) => <li key={b}>{b}</li>)}
         </ul>
-        <p className="lu-pprice">{product.price}</p>
       </div>
     </div>
   );
