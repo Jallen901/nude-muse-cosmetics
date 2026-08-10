@@ -474,3 +474,9 @@
 .lu-cat-bg-sets{background:linear-gradient(145deg,#e8a0bc 0%,#a84070 100%)}
 .lu-ann{background:#7d3f5a}
 @media(max-width:768px){.lu-cat-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── Category tile hover description ── */
+.lu-cat-desc{font-size:.74rem;color:rgba(255,255,255,.88);line-height:1.55;margin-top:.5rem;max-height:0;overflow:hidden;opacity:0;transition:opacity .35s ease,max-height .35s ease}
+.lu-cat-tile:hover .lu-cat-desc{max-height:6rem;opacity:1}
+.lu-cat-info{transition:background .35s ease}
+.lu-cat-tile:hover .lu-cat-info{background:linear-gradient(to top,rgba(42,21,32,.82) 0%,rgba(42,21,32,.15) 100%)}

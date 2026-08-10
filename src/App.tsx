@@ -22,10 +22,10 @@ const PRESS = [
 ];
 
 const CATEGORIES = [
-  { name: "Lip Gloss", sub: "4 shades", bg: "lu-cat-bg-gloss" },
-  { name: "Lip Liner", sub: "Precision wear", bg: "lu-cat-bg-liner" },
-  { name: "Lip Oil", sub: "Nourish & glow", bg: "lu-cat-bg-oil" },
-  { name: "Sets", sub: "Coming soon", bg: "lu-cat-bg-sets" },
+  { name: "Lip Gloss", sub: "4 shades", bg: "lu-cat-bg-gloss", desc: "High-shine hydration in your most flattering nude. Non-sticky formula with 6+ hour wear." },
+  { name: "Lip Liner", sub: "Precision wear", bg: "lu-cat-bg-liner", desc: "Long-wear precision that defines and stays all day. Creamy, crease-proof texture." },
+  { name: "Lip Oil", sub: "Nourish & glow", bg: "lu-cat-bg-oil", desc: "Nourishing gloss that amplifies any shade. Jojoba & rosehip blend with plumping peptides." },
+  { name: "Sets", sub: "Coming soon", bg: "lu-cat-bg-sets", desc: "Curated lip duos and trios launching 2025. Build your complete nude look." },
 ];
 
 function LogoMark() {
@@ -312,6 +312,7 @@ function ShopCategoriesSection() {
               <div className="lu-cat-info">
                 <p className="lu-cat-name">{cat.name}</p>
                 <p className="lu-cat-sub">{cat.sub}</p>
+                <p className="lu-cat-desc">{cat.desc}</p>
               </div>
             </a>
           ))}
