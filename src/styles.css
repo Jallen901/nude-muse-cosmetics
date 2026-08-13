@@ -479,6 +479,32 @@
 .lu-cat-tile:hover .lu-cat-desc{max-height:6rem;opacity:1}
 .lu-cat-grid-edit{margin:2rem 0 3rem}
 .scroll-scrub { background: transparent !important; }
+
+/* Hero → content gradient bridge */
+.lu-hero-bridge {
+  height: 7rem;
+  background: linear-gradient(to bottom, #1a0c10 0%, var(--lu-bg) 100%);
+  margin-top: -1px;
+}
+
+/* Scroll-reveal fade-up for sections below the hero */
+@keyframes lu-reveal {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@supports (animation-timeline: view()) {
+  .lu-trust,
+  .lu-section,
+  .lu-feature,
+  .lu-launch,
+  .lu-press,
+  .lu-cta-section {
+    animation: lu-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+}
 .lu-pimg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .lu-pimg-has-photo{background:var(--lu-surface)}
 /* -- Hero ghost CTA -- */

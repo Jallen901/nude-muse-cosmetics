@@ -372,6 +372,7 @@ function Index() {
         <Nav />
       </header>
       <ScrollScrub scenes={heroScenes} theme={scrollScrubTheme} />
+      <div className="lu-hero-bridge" aria-hidden="true" />
       <TrustBar />
       <EditSection />
       <LaunchSection />
