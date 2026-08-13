@@ -4,10 +4,10 @@ import { useState } from "react";
 
 
 const PRODUCTS = [
-  { name: "Nude Lip Gloss", price: "$28", detail: "High-shine hydration in your most flattering nude shade", tag: "BESTSELLER", swatchClass: "lu-swatch-gloss", benefits: ["Non-sticky high-shine finish", "Vitamin E moisturizing complex", "6+ hour wear"] },
-  { name: "Brown Lip Liner", price: "$22", detail: "Long-wear precision that defines and stays all day", tag: "NEW", swatchClass: "lu-swatch-liner", benefits: ["12-hour crease-proof formula", "Creamy glide-on texture", "Pairs with all nudes"] },
-  { name: "Clear Lip Oil", price: "$26", detail: "Nourishing gloss that amplifies any shade you wear", tag: "NEW", swatchClass: "lu-swatch-oil", benefits: ["Jojoba & rosehip oil blend", "Plumping peptide complex", "Layerable over any shade"] },
-  { name: "Hydrating Lip Balm", price: "$18", detail: "Your daily essential for soft, supple, kissable lips", tag: null, swatchClass: "lu-swatch-balm", benefits: ["Shea butter + hyaluronic acid", "All-day moisture seal", "Fragrance-free formula"] },
+  { name: "Nude Lip Gloss", price: "$28", img: "https://d8j0ntlcm91z4.cloudfront.net/user_3DYYteq9ay9ANYDPUaHvHjGjzxQ/hf_20260813_031034_06c0f1f1-7982-40b4-bcc4-8455691f8841.png", detail: "High-shine hydration in your most flattering nude shade", tag: "BESTSELLER", swatchClass: "lu-swatch-gloss", benefits: ["Non-sticky high-shine finish", "Vitamin E moisturizing complex", "6+ hour wear"] },
+  { name: "Brown Lip Liner", price: "$22", img: "https://d8j0ntlcm91z4.cloudfront.net/user_3DYYteq9ay9ANYDPUaHvHjGjzxQ/hf_20260813_031034_a1cc65cf-5ead-4680-9415-d672a6a5b617.png", detail: "Long-wear precision that defines and stays all day", tag: "NEW", swatchClass: "lu-swatch-liner", benefits: ["12-hour crease-proof formula", "Creamy glide-on texture", "Pairs with all nudes"] },
+  { name: "Clear Lip Oil", price: "$26", img: "https://d8j0ntlcm91z4.cloudfront.net/user_3DYYteq9ay9ANYDPUaHvHjGjzxQ/hf_20260813_031034_f08d28b9-429d-4cb4-91ab-d2c7c375d34c.png", detail: "Nourishing gloss that amplifies any shade you wear", tag: "NEW", swatchClass: "lu-swatch-oil", benefits: ["Jojoba & rosehip oil blend", "Plumping peptide complex", "Layerable over any shade"] },
+  { name: "Hydrating Lip Balm", price: "$18", img: null, detail: "Your daily essential for soft, supple, kissable lips", tag: null, swatchClass: "lu-swatch-balm", benefits: ["Shea butter + hyaluronic acid", "All-day moisture seal", "Fragrance-free formula"] },
 ];
 const TABS = ["ALL", "LIP GLOSS", "LIP LINER", "LIP OIL", "SETS"];
 const TESTIMONIALS = [
@@ -105,7 +105,10 @@ function TrustBar() {
 function ProductCard({ product }: { product: (typeof PRODUCTS)[number] }) {
   return (
     <div className="lu-pcard">
-      <div className={"lu-pimg " + product.swatchClass}>
+      <div className={"lu-pimg " + (product.img ? "lu-pimg-has-photo" : product.swatchClass)}>
+        {product.img && (
+          <img src={product.img} alt={product.name} className="lu-pimg-photo" />
+        )}
         {product.tag && <span className="lu-pbadge">{product.tag}</span>}
         <button className="lu-pquick">Notify Me</button>
       </div>

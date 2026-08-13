@@ -482,3 +482,5 @@
 .lu-cat-tile:hover .lu-cat-info{background:linear-gradient(to top,rgba(42,21,32,.82) 0%,rgba(42,21,32,.15) 100%)}
 .lu-cat-grid-edit{margin:2rem 0 3rem}
 .scroll-scrub { background: transparent !important; }
+.lu-pimg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.lu-pimg-has-photo{background:var(--lu-surface)}
