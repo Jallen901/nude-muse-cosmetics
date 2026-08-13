@@ -462,12 +462,11 @@
 .lu-categories-inner{max-width:1200px;margin:0 auto;padding:0 2rem}
 .lu-categories-heading{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lu-ink);font-weight:600;margin-bottom:2rem}
 .lu-cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.lu-cat-tile{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:flex-end;text-decoration:none}
-.lu-cat-bg{position:absolute;inset:0;transition:transform .4s ease}
-.lu-cat-tile:hover .lu-cat-bg{transform:scale(1.04)}
-.lu-cat-info{position:relative;z-index:1;padding:1.4rem;background:linear-gradient(to top,rgba(42,21,32,.6) 0%,transparent 100%);width:100%}
-.lu-cat-name{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#fff}
-.lu-cat-sub{font-size:.65rem;color:rgba(255,255,255,.7);margin-top:.2rem}
+.lu-cat-tile{position:relative;border-radius:4px;display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--lu-border);padding:1.75rem 1.5rem;transition:border-color .25s ease,background .25s ease;background:transparent}
+.lu-cat-tile:hover{border-color:var(--lu-accent);background:var(--lu-surface)}
+.lu-cat-info{position:relative;z-index:1;width:100%}
+.lu-cat-name{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--lu-ink)}
+.lu-cat-sub{font-size:.68rem;color:var(--lu-muted);margin-top:.3rem}
 .lu-cat-bg-gloss{background:linear-gradient(145deg,#f5c6d4 0%,#c96888 100%)}
 .lu-cat-bg-liner{background:linear-gradient(145deg,#9a4d6a 0%,#5a1f3a 100%)}
 .lu-cat-bg-oil{background:linear-gradient(145deg,#f8d8e4 0%,#d490a8 100%)}
@@ -476,10 +475,8 @@
 @media(max-width:768px){.lu-cat-grid{grid-template-columns:repeat(2,1fr)}}
 
 /* ── Category tile hover description ── */
-.lu-cat-desc{font-size:.74rem;color:rgba(255,255,255,.88);line-height:1.55;margin-top:.5rem;max-height:0;overflow:hidden;opacity:0;transition:opacity .35s ease,max-height .35s ease}
+.lu-cat-desc{font-size:.76rem;color:var(--lu-muted);line-height:1.6;margin-top:.75rem;max-height:0;overflow:hidden;opacity:0;transition:opacity .35s ease,max-height .35s ease}
 .lu-cat-tile:hover .lu-cat-desc{max-height:6rem;opacity:1}
-.lu-cat-info{transition:background .35s ease}
-.lu-cat-tile:hover .lu-cat-info{background:linear-gradient(to top,rgba(42,21,32,.82) 0%,rgba(42,21,32,.15) 100%)}
 .lu-cat-grid-edit{margin:2rem 0 3rem}
 .scroll-scrub { background: transparent !important; }
 .lu-pimg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}

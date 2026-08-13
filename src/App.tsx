@@ -317,7 +317,6 @@ function ShopCategoriesSection() {
         <div className="lu-cat-grid">
           {CATEGORIES.map((cat) => (
             <a key={cat.name} href="#cta" className="lu-cat-tile">
-              <div className={"lu-cat-bg " + cat.bg} />
               <div className="lu-cat-info">
                 <p className="lu-cat-name">{cat.name}</p>
                 <p className="lu-cat-sub">{cat.sub}</p>
@@ -342,7 +341,6 @@ function EditSection() {
         <div className="lu-cat-grid lu-cat-grid-edit">
           {CATEGORIES.map((cat) => (
             <a key={cat.name} href="#cta" className="lu-cat-tile">
-              <div className={"lu-cat-bg " + cat.bg} />
               <div className="lu-cat-info">
                 <p className="lu-cat-name">{cat.name}</p>
                 <p className="lu-cat-sub">{cat.sub}</p>
