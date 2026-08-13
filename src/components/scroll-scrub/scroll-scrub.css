@@ -11,9 +11,24 @@
   top: 0;
   z-index: 0;
   width: 100%;
-  height: 50dvh;
+  height: 75dvh;
   overflow: hidden;
   background: var(--ss-bg);
+}
+
+/* Warm feminine gradient wash over the video */
+.scroll-scrub__stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    150deg,
+    rgba(26, 12, 16, 0.6) 0%,
+    rgba(181, 99, 122, 0.22) 52%,
+    rgba(26, 12, 16, 0.4) 100%
+  );
+  pointer-events: none;
 }
 
 .scroll-scrub__media,
@@ -123,7 +138,7 @@
 .scroll-scrub__story {
   position: relative;
   z-index: 3;
-  margin-top: -50dvh;
+  margin-top: -75dvh;
   pointer-events: none;
 }
 
@@ -137,8 +152,8 @@
   top: 0;
   display: flex;
   align-items: center;
-  min-height: 50dvh;
-  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 6vw, 6rem);
+  min-height: 75dvh;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 6vw, 6rem);
   pointer-events: none;
 }
 
@@ -148,52 +163,64 @@
 
 .scroll-scrub__copy {
   position: relative;
-  width: min(40rem, 48vw);
+  width: min(44rem, 52vw);
   pointer-events: auto;
 }
 
 .scroll-scrub__copy::before {
   position: absolute;
   z-index: -1;
-  inset: -3rem -5rem;
+  inset: -5rem -7rem;
   content: "";
   background: radial-gradient(
-    ellipse at center,
-    color-mix(in srgb, var(--ss-bg) 88%, transparent) 0%,
-    color-mix(in srgb, var(--ss-bg) 58%, transparent) 52%,
-    transparent 76%
+    ellipse at 28% 52%,
+    color-mix(in srgb, var(--ss-bg) 76%, transparent) 0%,
+    color-mix(in srgb, var(--ss-bg) 42%, transparent) 42%,
+    transparent 70%
   );
   pointer-events: none;
 }
 
+/* Decorative accent line above kicker */
+.scroll-scrub__kicker::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 1px;
+  background: var(--ss-accent);
+  margin-bottom: 1rem;
+}
+
 .scroll-scrub__kicker {
-  max-width: 30ch;
-  margin: 0 0 1rem;
-  color: var(--ss-accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  max-width: 40ch;
+  margin: 0 0 1.5rem;
+  color: rgba(250, 245, 240, 0.58);
+  font-size: 0.67rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
 }
 
 .scroll-scrub__title {
-  max-width: 13ch;
+  max-width: 18ch;
   margin: 0;
   color: var(--ss-ink);
-  font: inherit;
-  font-size: clamp(2.75rem, 6vw, 6.75rem);
-  font-weight: 700;
-  line-height: 0.94;
-  letter-spacing: -0.045em;
+  font-family: 'Didot', 'Bodoni 72', 'Bodoni MT', Garamond, Georgia, 'Times New Roman', serif;
+  font-size: clamp(3.2rem, 6.5vw, 8.5rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 
 .scroll-scrub__body {
-  max-width: 42ch;
-  margin: 1.5rem 0 0;
-  color: var(--ss-muted);
-  font-size: clamp(1rem, 1.35vw, 1.2rem);
-  line-height: 1.55;
+  max-width: 36ch;
+  margin: 1.75rem 0 0;
+  color: rgba(250, 245, 240, 0.7);
+  font-size: clamp(0.88rem, 1.15vw, 1rem);
+  line-height: 1.7;
+  font-weight: 300;
 }
 
 .scroll-scrub__tags {
@@ -216,7 +243,29 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
+}
+
+/* Staggered entrance animations */
+@keyframes ss-fade-up {
+  from { opacity: 0; transform: translateY(1.1rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-scrub__kicker {
+  animation: ss-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both 0.1s;
+}
+
+.scroll-scrub__title {
+  animation: ss-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both 0.28s;
+}
+
+.scroll-scrub__body {
+  animation: ss-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both 0.45s;
+}
+
+.scroll-scrub__actions {
+  animation: ss-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both 0.6s;
 }
 
 @media (max-width: 860px) {
@@ -262,14 +311,14 @@
   }
 
   .scroll-scrub__title {
-    max-width: 14ch;
-    font-size: clamp(2.3rem, 11vw, 4.5rem);
+    max-width: 16ch;
+    font-size: clamp(2.8rem, 12vw, 5rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .scroll-scrub__chapter {
-    min-height: 50dvh !important;
+    min-height: 75dvh !important;
   }
 
   .scroll-scrub__connector-band {
@@ -278,5 +327,12 @@
 
   .scroll-scrub__progress span {
     transition: none;
+  }
+
+  .scroll-scrub__kicker,
+  .scroll-scrub__title,
+  .scroll-scrub__body,
+  .scroll-scrub__actions {
+    animation: none;
   }
 }

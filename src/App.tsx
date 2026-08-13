@@ -2,6 +2,13 @@ import { ScrollScrub } from "./components/scroll-scrub/scroll-scrub";
 import { scrollScrubScenes, scrollScrubTheme } from "./scroll-scrub-scenes";
 import { useState } from "react";
 
+const heroScenes = scrollScrubScenes.map((scene, i) => ({
+  ...scene,
+  actions: i === 0 ? (
+    <a href="#collection" className="lu-btn-ghost">Shop the Collection &rarr;</a>
+  ) : undefined,
+}));
+
 
 const PRODUCTS = [
   { name: "Nude Lip Gloss", price: "$28", img: "https://d8j0ntlcm91z4.cloudfront.net/user_3DYYteq9ay9ANYDPUaHvHjGjzxQ/hf_20260813_031034_06c0f1f1-7982-40b4-bcc4-8455691f8841.png", detail: "High-shine hydration in your most flattering nude shade", tag: "BESTSELLER", swatchClass: "lu-swatch-gloss", benefits: ["Non-sticky high-shine finish", "Vitamin E moisturizing complex", "6+ hour wear"] },
@@ -366,7 +373,7 @@ function Index() {
         <AnnouncementBar />
         <Nav />
       </header>
-      <ScrollScrub scenes={scrollScrubScenes} theme={scrollScrubTheme} />
+      <ScrollScrub scenes={heroScenes} theme={scrollScrubTheme} />
       <TrustBar />
       <EditSection />
       <LaunchSection />
