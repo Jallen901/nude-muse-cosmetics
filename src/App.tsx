@@ -1,6 +1,6 @@
 import { ScrollScrub } from "./components/scroll-scrub/scroll-scrub";
 import { scrollScrubScenes, scrollScrubTheme } from "./scroll-scrub-scenes";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const heroScenes = scrollScrubScenes.map((scene, i) => ({
   ...scene,
@@ -278,10 +278,125 @@ function SiteFooter() {
 
 
 
+const NUDE_PALETTE = [
+  "#3d1825","#4e2030","#5a2a38","#6b3545","#7a4255",
+  "#8a5060","#9a6070","#a87888","#b58898","#7c3848",
+  "#6a2838","#954862","#c07888","#b06878","#8c4858",
+  "#4a2232","#622840","#703848","#984868","#a05868",
+];
+const GLITTER_COLORS = ["255,255,255","212,175,100","245,200,175","255,220,210"];
+
+function GlitterBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const TILE = 38;
+    type Tile = { color: string; phase: number; rate: number };
+    type Spark = { x: number; y: number; sz: number; alpha: number; rate: number; color: string };
+
+    let W = 0, H = 0, grid: Tile[][] = [];
+
+    const sparks: Spark[] = Array.from({ length: 90 }, () => ({
+      x: Math.random(), y: Math.random(),
+      sz: 0.8 + Math.random() * 2.2,
+      alpha: Math.random(),
+      rate: 0.005 + Math.random() * 0.016,
+      color: GLITTER_COLORS[Math.floor(Math.random() * GLITTER_COLORS.length)],
+    }));
+
+    const buildGrid = () => {
+      const cols = Math.ceil(W / TILE) + 1;
+      const rows = Math.ceil(H / TILE) + 1;
+      grid = Array.from({ length: rows }, () =>
+        Array.from({ length: cols }, () => ({
+          color: NUDE_PALETTE[Math.floor(Math.random() * NUDE_PALETTE.length)],
+          phase: Math.random() * Math.PI * 2,
+          rate: 0.01 + Math.random() * 0.022,
+        }))
+      );
+    };
+
+    const resize = () => {
+      W = canvas.offsetWidth;
+      H = canvas.offsetHeight;
+      canvas.width = W;
+      canvas.height = H;
+      buildGrid();
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    let raf = 0;
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+
+      grid.forEach((row, r) =>
+        row.forEach((tile, c) => {
+          tile.phase += tile.rate;
+          const shine = 0.75 + Math.sin(tile.phase) * 0.25;
+          ctx.globalAlpha = shine;
+          ctx.fillStyle = tile.color;
+          ctx.fillRect(c * TILE, r * TILE, TILE - 1, TILE - 1);
+        })
+      );
+
+      ctx.globalAlpha = 1;
+      sparks.forEach(sp => {
+        sp.alpha += sp.rate;
+        if (sp.alpha >= 1) sp.rate = -Math.abs(sp.rate);
+        if (sp.alpha <= 0) {
+          sp.rate = Math.abs(sp.rate);
+          sp.x = Math.random();
+          sp.y = Math.random();
+        }
+        const x = sp.x * W, y = sp.y * H, s = sp.sz;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, sp.alpha) * 0.9;
+        ctx.fillStyle = `rgb(${sp.color})`;
+        ctx.beginPath();
+        ctx.moveTo(x, y - s * 2.4);
+        ctx.lineTo(x + s * 0.4, y - s * 0.4);
+        ctx.lineTo(x + s * 2.4, y);
+        ctx.lineTo(x + s * 0.4, y + s * 0.4);
+        ctx.lineTo(x, y + s * 2.4);
+        ctx.lineTo(x - s * 0.4, y + s * 0.4);
+        ctx.lineTo(x - s * 2.4, y);
+        ctx.lineTo(x - s * 0.4, y - s * 0.4);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      });
+
+      raf = requestAnimationFrame(draw);
+    };
+
+    draw();
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }}
+    />
+  );
+}
+
 function LaunchSection() {
   return (
     <section className="lu-launch">
-      <div className="lu-launch-inner">
+      <GlitterBackground />
+      <div className="lu-launch-inner" style={{ position: "relative", zIndex: 1 }}>
         <p className="lu-launch-eyebrow">Launching 2025</p>
         <h2 className="lu-launch-title">Nudes Built for Every Skin. Finally.</h2>
         <p className="lu-launch-body">
