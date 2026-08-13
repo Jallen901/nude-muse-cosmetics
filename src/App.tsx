@@ -395,8 +395,7 @@ function GlitterBackground() {
 function LaunchSection() {
   return (
     <section className="lu-launch">
-      <GlitterBackground />
-      <div className="lu-launch-inner" style={{ position: "relative", zIndex: 1 }}>
+      <div className="lu-launch-inner">
         <p className="lu-launch-eyebrow">Launching 2025</p>
         <h2 className="lu-launch-title">Nudes Built for Every Skin. Finally.</h2>
         <p className="lu-launch-body">
