@@ -510,3 +510,175 @@
 /* -- Hero ghost CTA -- */
 .lu-btn-ghost{display:inline-block;padding:.85rem 2.4rem;border:1px solid rgba(255,255,255,.5);color:rgba(255,255,255,.92);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;font-family:inherit;transition:background .28s ease,border-color .28s ease}
 .lu-btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.9)}
+
+/* ══════════════════════════════════════════════
+   Editorial Luxury Redesign — YRVSN / Organii
+   ══════════════════════════════════════════════ */
+
+/* Hero: centered editorial layout */
+.scroll-scrub__chapter-pin,
+.scroll-scrub__chapter[data-align="right"] .scroll-scrub__chapter-pin {
+  justify-content: center !important;
+}
+.scroll-scrub__copy {
+  text-align: center !important;
+}
+@media (min-width: 861px) {
+  .scroll-scrub__copy {
+    width: min(60rem, 88vw) !important;
+  }
+  .scroll-scrub__copy::before {
+    inset: -8rem -14rem !important;
+    background: radial-gradient(
+      ellipse at 50% 52%,
+      color-mix(in srgb, var(--ss-bg) 68%, transparent) 0%,
+      color-mix(in srgb, var(--ss-bg) 32%, transparent) 44%,
+      transparent 64%
+    ) !important;
+  }
+}
+.scroll-scrub__kicker::before {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.scroll-scrub__actions {
+  justify-content: center !important;
+}
+
+/* Serif italic for ALL section headings */
+.lu-section-title,
+.lu-launch-title,
+.lu-cta-title {
+  font-family: 'Didot', 'Bodoni 72', 'Bodoni MT', Garamond, Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.lu-section-title {
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+}
+
+.lu-launch-title {
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 300;
+}
+
+.lu-cta-title {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+}
+
+/* Generous editorial whitespace */
+.lu-section {
+  padding: 9rem 0;
+}
+
+.lu-section-intro {
+  font-size: 1.06rem;
+  max-width: 580px;
+  margin: 0 auto 5rem;
+  line-height: 1.8;
+}
+
+.lu-launch {
+  padding: 10rem 2rem;
+}
+
+.lu-cta-section {
+  padding: 10rem 2rem;
+}
+
+/* Product grid — more breathing room */
+.lu-pgrid {
+  gap: 2rem;
+}
+
+.lu-pcard {
+  gap: 1.5rem;
+}
+
+.lu-pname {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+}
+
+/* Feature 50/50 — more spacious */
+.lu-feature-text {
+  padding: 7rem 5rem;
+  gap: 2rem;
+}
+
+.lu-feature-body {
+  font-size: 1.05rem;
+}
+
+/* Press bar — more generous */
+.lu-press {
+  padding: 4.5rem 2rem;
+}
+
+.lu-press-quote {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* CTA refinement */
+.lu-cta-inner {
+  max-width: 720px;
+}
+
+.lu-cta-body {
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 3rem;
+}
+
+.lu-input {
+  border-radius: 0;
+  padding: 1rem 1.5rem;
+}
+
+.lu-btn-primary {
+  border-radius: 0;
+  padding: 1rem 2.25rem;
+}
+
+/* Launch stats — serif italic numerals */
+.lu-stat-num {
+  font-family: 'Didot', 'Bodoni 72', 'Bodoni MT', Garamond, Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 4rem;
+  font-weight: 300;
+}
+
+/* Testimonials — more spacious */
+.lu-testimonial {
+  padding: 3rem;
+}
+
+.lu-quote-body {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Trust bar — more refined alignment */
+.lu-trust-item {
+  align-items: center;
+  padding: 2.25rem 2rem;
+}
+
+.lu-trust-label {
+  letter-spacing: .1em;
+  margin-bottom: .5rem;
+}
+
+@media (max-width: 768px) {
+  .lu-section { padding: 6rem 0; }
+  .lu-feature-text { padding: 4rem 2.5rem !important; }
+  .lu-launch { padding: 7rem 2rem !important; }
+  .lu-cta-section { padding: 7rem 2rem !important; }
+}
