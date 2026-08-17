@@ -520,9 +520,15 @@
 .scroll-scrub__chapter[data-align="right"] .scroll-scrub__chapter-pin {
   justify-content: center !important;
 }
+
+/* Make copy a centered flex column so every child centers */
 .scroll-scrub__copy {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
   text-align: center !important;
 }
+
 @media (min-width: 861px) {
   .scroll-scrub__copy {
     width: min(60rem, 88vw) !important;
@@ -537,10 +543,13 @@
     ) !important;
   }
 }
+
+/* Accent line above kicker — center the 2.5rem block */
 .scroll-scrub__kicker::before {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
 .scroll-scrub__actions {
   justify-content: center !important;
 }
@@ -692,13 +701,17 @@
   .scroll-scrub__chapter[data-align="right"] .scroll-scrub__chapter-pin {
     justify-content: center !important;
     align-items: center !important;
+    padding: 2rem 1.5rem !important;
+  }
+  .scroll-scrub__copy {
+    width: min(100%, 34rem) !important;
   }
   .scroll-scrub__copy::before {
     inset: -4rem -3rem !important;
     background: radial-gradient(
       ellipse at 50% 52%,
-      color-mix(in srgb, var(--ss-bg) 80%, transparent) 0%,
-      color-mix(in srgb, var(--ss-bg) 42%, transparent) 52%,
+      color-mix(in srgb, var(--ss-bg) 82%, transparent) 0%,
+      color-mix(in srgb, var(--ss-bg) 44%, transparent) 52%,
       transparent 72%
     ) !important;
   }
